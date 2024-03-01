@@ -10,6 +10,7 @@ pipeline {
                     env.PATH = "${goHome}/bin:${env.PATH}"
                 }
                 sh 'go build -o hello'
+                sh 'echo "Hello, world!"'
             }
         }
         stage('Run') {
