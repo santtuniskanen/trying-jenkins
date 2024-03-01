@@ -1,14 +1,13 @@
 pipeline {
-    agent { docker { image 'golang:1.22.0-alpine3.19' } }
+    agent any
+
+    tools {
+        go '1.22.0'
+    }
 
     stages {
         stage('Build') {
             steps {
-                script {
-                    def goHome = tool name: 'Go', type: 'go'
-                    env.GOPATH = "${env.WORKSPACE}/go"
-                    env.PATH = "${goHome}/bin:${env.PATH}"
-                }
                 sh 'go build -o hello'
                 sh 'echo "Hello, world!"'
             }
