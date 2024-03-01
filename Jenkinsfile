@@ -4,7 +4,8 @@ pipeline {
         stage('build') {
             steps {
 	    	sh 'echo "Hello, World!"'
-                sh 'go run main.go'
+                sh 'go build'
+		sh './trying-jenkins'
             }
         }
     }
