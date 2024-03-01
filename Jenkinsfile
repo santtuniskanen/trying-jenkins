@@ -9,6 +9,7 @@ pipeline {
             steps {
                 sh 'go build -o hello'
 		sh './hello'
+		sh 'echo "Work, please..."'
             }
         }
     }
