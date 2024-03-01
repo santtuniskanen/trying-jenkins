@@ -7,7 +7,6 @@ pipeline {
     stages {
         stage('build') {
             steps {
-	    	sh 'echo "Hello, World!"'
                 sh 'go build -o hello'
 		sh './hello'
             }
