@@ -1,10 +1,30 @@
-pipeine {
-    agent { docker { image 'golang:1.22.0-alpine3.19' } }
+pipeline {
+    agent any
+
+    tools {
+        go '1.22.0'
+    }
+
     stages {
-        stage('build') {
+        stage('Build') {
             steps {
-                sh 'go version'
+                sh 'go build -o hello'
+                sh 'echo "Hello, world!"'
+            }
+        }
+        stage('Run') {
+            steps {
+                sh './hello'
             }
         }
     }
-}l
+
+    post {
+        success {
+            echo 'Build successful'
+        }
+        failure {
+            echo 'Build failed'
+        }
+    }
+}
